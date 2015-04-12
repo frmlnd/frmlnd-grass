@@ -1,0 +1,21 @@
+{
+  "name": "FRMLND-Grass",
+  "version": "0.1.0",
+  "authors": [
+    "apenly@gmail.com"
+  ],
+  "description": "A silly javascript app that makes grass grow at the bottom of a container, most likely a webpage.",
+  "license": "MIT",
+  "homepage": "https://github.com/frmlnd/frmlnd-grass",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "1.11.2",
+    "angular": "1.3.15"
+  }
+}

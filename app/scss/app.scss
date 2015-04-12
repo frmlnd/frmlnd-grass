@@ -1,0 +1,23 @@
+* {
+	box-sizing: border-box;
+}
+html, body {
+	width: 100%;
+	height: 100%;
+}
+body {
+	height: 100%;
+	margin: 0;
+	background: linear-gradient(to bottom, #b7eaff 0%,#94dfff 100%);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	color: #fff;
+	font: 400 16px/1.5 'Lucida Console', Arial, Helvetica, sans-serif;
+}
+.page {
+	position: relative;
+	h1 {
+		font-size: 36px;
+		font-weight: 400;
+	}
+}
