@@ -1,12 +1,12 @@
 frmlnd-grass {
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	& > .blade {
 		position: absolute;
 		bottom: 0;
 		width: 1px;
 		height: 0;
-		background-color: green;
+		background-color: #267F26;
 		z-index: 1;
 	}
 }

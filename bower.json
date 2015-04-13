@@ -2,9 +2,9 @@
   "name": "FRMLND-Grass",
   "version": "0.1.0",
   "authors": [
-    "apenly@gmail.com"
+    "Adam Penly", "Adam Penly <apenly@gmail.com>",
   ],
-  "description": "A silly javascript app that makes grass grow at the bottom of a container, most likely a webpage.",
+  "description": "A silly angular app that makes grass grow at the bottom of a container, most likely a webpage.",
   "license": "MIT",
   "homepage": "https://github.com/frmlnd/frmlnd-grass",
   "ignore": [

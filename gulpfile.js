@@ -1,5 +1,7 @@
 /* Gulpfile */
 
+var p = require('./package.json')
+
 var gulp = require('gulp'),
     sass = require('gulp-ruby-sass');
     connect = require('gulp-connect'),
@@ -8,7 +10,8 @@ var gulp = require('gulp'),
     rename = require("gulp-rename"),
     gutil = require('gulp-util'),
     sourcemaps = require('gulp-sourcemaps'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    insert = require('gulp-insert');
 
 var sources = {
     sass: ['./app/scss/*.scss'],
@@ -54,23 +57,35 @@ gulp.task('connect', function(){
     });
 });
 
-/*
 gulp.task('concatcompress', function() {
-    gulp.src( ['./js/app.js'] )
-        .pipe(sourcemaps.init())
-        .pipe(concat('./js/app.js'))
-        .pipe(rename('./js/app.min.js'))
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./'))
+    gulp.src([
+        './app/js/app.js', 
+        './app/js/controllers/*.js', 
+        './app/js/directives/*.js', 
+        './app/js/services/*.js', 
+        './app/js/filters/*.js'
+    ])
+        .on('error', function (err) { console.log(err.message); })
+            .pipe(sourcemaps.init())
+            .pipe(concat('frmlnd-grass.js'))  
+            .pipe(rename('frmlnd-grass.min.js'))
+            .pipe(insert.prepend(
+                '/**\n  ' +
+                '* A silly angular app that makes grass grow at the bottom of a container, most likely a webpage.\n  ' +
+                '* @version ' + p.version + '\n  ' + 
+                '* @link https://github.com/frmlnd/frmlnd-grass\n  ' +
+                '* @license MIT License, http://www.opensource.org/licenses/MIT\n  */\n\n'
+            ))
+            .pipe(sourcemaps.write())
+            .pipe(gulp.dest('./app/js'));
 });
-*/
 
 gulp.task('watch', function(){
     gulp.watch(sources.sass, ['sass']);
     gulp.watch(sources.html, ['html']);
     gulp.watch(sources.js, ['js']);
-    //gulp.watch(sources.js, ['js','concatcompress']);
+    gulp.watch(sources.js, ['js','concatcompress']);
 });
 
-gulp.task( 'default', ['connect', 'copy', 'sass'/*, 'concatcompress'*/, 'watch'] );
+gulp.task( 'default', ['connect', 'copy', 'sass', 'concatcompress', 'watch'] );
 gulp.task( 'build', ['copy', 'sass', 'concatcompress']  );
