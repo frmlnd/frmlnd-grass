@@ -14,9 +14,9 @@ var gulp = require('gulp'),
     insert = require('gulp-insert');
 
 var sources = {
-    sass: ['./app/scss/*.scss'],
-    html: ['./app/**/*.html'],
-    js: ['./app/**/*.js'],
+    sass: ['./src/scss/*.scss'],
+    html: ['./src/**/*.html'],
+    js: ['./src/**/*.js'],
     bower_js: [
         './bower_components/angular/angular.min.js',
         './bower_components/angular/angular.min.js.map'
@@ -27,10 +27,10 @@ gulp.task('sass', function(){
     gulp.src(sources.sass)
         .on('error', function (err) { console.log(err.message); })
             .pipe(sass({style: 'expanded'}))
-            .pipe(gulp.dest('./app/css'))
+            .pipe(gulp.dest('./src/css'))
             .pipe(rename({suffix: '.min'}))
             .pipe(minifycss())
-            .pipe(gulp.dest('./app/css'))
+            .pipe(gulp.dest('./src/css'))
             .pipe(connect.reload());
 });
 
@@ -46,7 +46,7 @@ gulp.task('html', function(){
 
 gulp.task('copy', function() {
     gulp.src(sources.bower_js)
-        .pipe(gulp.dest('./app/js'));
+        .pipe(gulp.dest('./src/js'));
 
 });
 
@@ -58,26 +58,30 @@ gulp.task('connect', function(){
 });
 
 gulp.task('concatcompress', function() {
+
+    var license = '/**\n  ' +
+                  '* A silly angular app that makes grass grow at the bottom of a container, most likely a webpage.\n  ' +
+                  '* @version ' + p.version + '\n  ' + 
+                  '* @link https://github.com/frmlnd/frmlnd-grass\n  ' +
+                  '* @license MIT License, http://www.opensource.org/licenses/MIT\n  */\n\n';
+
     gulp.src([
-        './app/js/app.js', 
-        './app/js/controllers/*.js', 
-        './app/js/directives/*.js', 
-        './app/js/services/*.js', 
-        './app/js/filters/*.js'
+        './src/js/app.js', 
+        './src/js/controllers/*.js', 
+        './src/js/directives/*.js', 
+        './src/js/services/*.js', 
+        './src/js/filters/*.js'
     ])
         .on('error', function (err) { console.log(err.message); })
             .pipe(sourcemaps.init())
             .pipe(concat('frmlnd-grass.js'))  
+            .pipe(insert.prepend(license))
+            .pipe(gulp.dest('./src/js'))
             .pipe(rename('frmlnd-grass.min.js'))
-            .pipe(insert.prepend(
-                '/**\n  ' +
-                '* A silly angular app that makes grass grow at the bottom of a container, most likely a webpage.\n  ' +
-                '* @version ' + p.version + '\n  ' + 
-                '* @link https://github.com/frmlnd/frmlnd-grass\n  ' +
-                '* @license MIT License, http://www.opensource.org/licenses/MIT\n  */\n\n'
-            ))
             .pipe(sourcemaps.write())
-            .pipe(gulp.dest('./app/js'));
+            .pipe(uglify())
+            .pipe(insert.prepend(license))
+            .pipe(gulp.dest('./src/js'));
 });
 
 gulp.task('watch', function(){
@@ -87,5 +91,12 @@ gulp.task('watch', function(){
     gulp.watch(sources.js, ['js','concatcompress']);
 });
 
+gulp.task('dist', function() {
+    gulp.src(['./src/js/**/frmlnd-*.*'])
+        .pipe(gulp.dest('./dist/js'));
+    gulp.src(['./src/css/**/frmlnd-*.*'])
+        .pipe(gulp.dest('./dist/css'));
+});
+
 gulp.task( 'default', ['connect', 'copy', 'sass', 'concatcompress', 'watch'] );
-gulp.task( 'build', ['copy', 'sass', 'concatcompress']  );
+gulp.task( 'build', ['copy', 'sass', 'concatcompress', 'dist']  );
