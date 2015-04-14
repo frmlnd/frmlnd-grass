@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700);
 * {
   box-sizing: border-box;
 }
@@ -17,7 +18,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: #4A6F7F;
-  font: 400 16px/1.5 "Lucida Console", Arial, Helvetica, sans-serif;
+  font: 400 16px/1.5 "Source Code Pro", Arial, Helvetica, sans-serif;
 }
 
 .page {
@@ -29,10 +30,13 @@ body {
 .page h1 {
   margin: 100px 0 0;
   font-size: 36px;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1;
   text-align: center;
   color: #267F26;
+}
+.page h2 {
+  font-weight: 500;
 }
 .page p .cite {
   font-size: .8em;
