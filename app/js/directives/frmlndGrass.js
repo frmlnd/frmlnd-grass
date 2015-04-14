@@ -4,10 +4,10 @@ var frmlndGrass = function($window, $interval) {
 		scope: {},
 		link: function(scope, element, attrs) {
 
-			// Get window dimensions
+			// Observe the element's dimensions.
 			var dimensions = {
-				w: $window.innerWidth,
-				h: $window.innerHeight
+				w: element[0].offsetParent.clientWidth,
+				h: element[0].offsetParent.clientHeight
 			};
 
 			// Create grass blades and add them to the DOM
