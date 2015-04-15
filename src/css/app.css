@@ -8,6 +8,27 @@ a {
   color: #253840;
 }
 
+button {
+  border: 0;
+  background: #267F26;
+  color: #fff;
+  padding: 5px 20px;
+  font-size: 1.2em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background: #2c932c;
+}
+button[disabled] {
+  background: #999;
+  background: rgba(38, 127, 38, 0.2);
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 html, body {
   width: 100%;
 }

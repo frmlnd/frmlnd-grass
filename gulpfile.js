@@ -11,7 +11,8 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     sourcemaps = require('gulp-sourcemaps'),
     uglify = require('gulp-uglify'),
-    insert = require('gulp-insert');
+    insert = require('gulp-insert'),
+    plumber = require('gulp-plumber');
 
 var sources = {
     sass: ['./src/scss/*.scss'],
@@ -25,29 +26,31 @@ var sources = {
 
 gulp.task('sass', function(){
     gulp.src(sources.sass)
-        .on('error', function (err) { console.log(err.message); })
-            .pipe(sass({style: 'expanded'}))
-            .pipe(gulp.dest('./src/css'))
-            .pipe(rename({suffix: '.min'}))
-            .pipe(minifycss())
-            .pipe(gulp.dest('./src/css'))
-            .pipe(connect.reload());
+        .pipe(plumber())
+        .pipe(sass({style: 'expanded'}))
+        .pipe(gulp.dest('./src/css'))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(minifycss())
+        .pipe(gulp.dest('./src/css'))
+        .pipe(connect.reload());
 });
 
 gulp.task('js', function(){
     gulp.src( sources.js )
+        .pipe(plumber())
         .pipe(connect.reload());
 });
 
 gulp.task('html', function(){
     gulp.src( sources.html )
+        .pipe(plumber())
         .pipe(connect.reload());
 });
 
 gulp.task('copy', function() {
     gulp.src(sources.bower_js)
+        .pipe(plumber())
         .pipe(gulp.dest('./src/js'));
-
 });
 
 gulp.task('connect', function(){
@@ -72,16 +75,16 @@ gulp.task('concatcompress', function() {
         './src/js/services/*.js', 
         './src/js/filters/*.js'
     ])
-        .on('error', function (err) { console.log(err.message); })
-            .pipe(sourcemaps.init())
-            .pipe(concat('frmlnd-grass.js'))  
-            .pipe(insert.prepend(license))
-            .pipe(gulp.dest('./src/js'))
-            .pipe(rename('frmlnd-grass.min.js'))
-            .pipe(sourcemaps.write())
-            .pipe(uglify())
-            .pipe(insert.prepend(license))
-            .pipe(gulp.dest('./src/js'));
+        .pipe(plumber())
+        .pipe(sourcemaps.init())
+        .pipe(concat('frmlnd-grass.js'))  
+        .pipe(insert.prepend(license))
+        .pipe(gulp.dest('./src/js'))
+        .pipe(rename('frmlnd-grass.min.js'))
+        .pipe(sourcemaps.write())
+        .pipe(uglify())
+        .pipe(insert.prepend(license))
+        .pipe(gulp.dest('./src/js'));
 });
 
 gulp.task('watch', function(){
@@ -93,10 +96,12 @@ gulp.task('watch', function(){
 
 gulp.task('dist', function() {
     gulp.src(['./src/js/**/frmlnd-*.*'])
+        .pipe(plumber())
         .pipe(gulp.dest('./dist/js'));
     gulp.src(['./src/css/**/frmlnd-*.*'])
+        .pipe(plumber())
         .pipe(gulp.dest('./dist/css'));
 });
 
-gulp.task( 'default', ['connect', 'copy', 'sass', 'concatcompress', 'watch'] );
+gulp.task( 'default', ['connect', 'copy', 'sass', 'watch'] );
 gulp.task( 'build', ['copy', 'sass', 'concatcompress', 'dist']  );
