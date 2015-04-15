@@ -103,5 +103,5 @@ gulp.task('dist', function() {
         .pipe(gulp.dest('./dist/css'));
 });
 
-gulp.task( 'default', ['connect', 'copy', 'sass', 'watch'] );
+gulp.task( 'default', ['connect', 'copy', 'sass', 'concatcompress', 'watch'] );
 gulp.task( 'build', ['copy', 'sass', 'concatcompress', 'dist']  );
