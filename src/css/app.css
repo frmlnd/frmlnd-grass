@@ -54,6 +54,8 @@ body {
   font-weight: 600;
   line-height: 1;
   text-align: center;
+}
+.page h1 a {
   color: #267F26;
 }
 .page h2 {
