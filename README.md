@@ -30,4 +30,7 @@ Include frmlnd-grass directive, with duration as a parameter in milliseconds.
 
 The directive exposes the following public methods:
 
-* frmlndGrow() - Called from outside of directive scope to access directive grow fuction - ex: <button ng-click="frmlndGrow()" ng-bind-html="Grow"></button>
+* frmlndGrow() - Called from outside of directive scope to access directive grow fuction. Example: 
+```
+<button ng-click="frmlndGrow()" ng-bind-html="Grow"></button>
+```
