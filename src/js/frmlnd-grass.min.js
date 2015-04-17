@@ -1,6 +1,8 @@
 /**
+  * frmlnd-grass
   * A silly angular app that makes grass grow at the bottom of a container, most likely a webpage.
   * @version 0.1.0
+  * @author Adam Penly <apenly@gmail.com>
   * @link https://github.com/frmlnd/frmlnd-grass
   * @license MIT License, http://www.opensource.org/licenses/MIT
   */
