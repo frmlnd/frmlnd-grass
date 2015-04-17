@@ -63,8 +63,10 @@ gulp.task('connect', function(){
 gulp.task('concatcompress', function() {
 
     var license = '/**\n  ' +
+                  '* frmlnd-grass\n  ' +
                   '* A silly angular app that makes grass grow at the bottom of a container, most likely a webpage.\n  ' +
                   '* @version ' + p.version + '\n  ' + 
+                  '* @author Adam Penly <apenly@gmail.com>\n  ' + 
                   '* @link https://github.com/frmlnd/frmlnd-grass\n  ' +
                   '* @license MIT License, http://www.opensource.org/licenses/MIT\n  */\n\n';
 
