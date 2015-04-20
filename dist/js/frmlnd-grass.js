@@ -1,6 +1,8 @@
 /**
+  * frmlnd-grass
   * A silly angular app that makes grass grow at the bottom of a container, most likely a webpage.
   * @version 0.1.0
+  * @author Adam Penly <apenly@gmail.com>
   * @link https://github.com/frmlnd/frmlnd-grass
   * @license MIT License, http://www.opensource.org/licenses/MIT
   */
@@ -29,7 +31,7 @@ var app = angular.module('frmlnd-grass', []);
 
 (function() {
 
-	var frmlndGrass = function($window, $interval) {
+	var frmlndGrass = function($window, $interval, $timeout) {
 		return {
 			restrict: 'E',
 			transclude: false,
@@ -91,13 +93,15 @@ var app = angular.module('frmlnd-grass', []);
 				};
 
 				if (attrs.auto === 'true') {
-					scope.initGrow();
+					$timeout(function() {
+						scope.initGrow();
+					}, (attrs.delay) ? attrs.delay : 2000);
 				}
 			}
 		}
 	};
 
-	frmlndGrass.$inject = ['$window','$interval'];
+	frmlndGrass.$inject = ['$window', '$interval', '$timeout'];
 	angular.module('frmlnd-grass').directive('frmlndGrass', frmlndGrass);
 
 })();

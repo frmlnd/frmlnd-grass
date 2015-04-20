@@ -21,15 +21,17 @@
 				<span class="cite">-Thomas Jefferson</span>
 			</p>
 			<p>&nbsp;</p>
-			<h2>A <a href="http://github.com/frmlnd" target="_blank">FRMLND</a> experiment.</h2>
-			<p>&nbsp;</p>
 			<p>
 				<button ng-click="main.isClicked = true; main.isDisabled = true; frmlndGrow()" ng-bind-html="main.buttonText()" ng-disabled="main.isDisabled"></button>
 			</p>
 		</div>
 
-		<frmlnd-grass duration="2500" auto="false"></frmlnd-grass>
-		
+		<frmlnd-grass duration="2500" auto="true" delay="5000"></frmlnd-grass>
+
+		<footer>
+			<a href="https://github.com/frmlnd/frmlnd-grass" target="_blank">Current</a> is a <a href="https://github.com/frmlnd/" target="_blank">FRMLND</a> experiment.
+		</footer>
+
 	</body>
 	
 	<script type="text/javascript" src="src/js/angular.min.js"></script>

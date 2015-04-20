@@ -31,7 +31,7 @@ var app = angular.module('frmlnd-grass', []);
 
 (function() {
 
-	var frmlndGrass = function($window, $interval) {
+	var frmlndGrass = function($window, $interval, $timeout) {
 		return {
 			restrict: 'E',
 			transclude: false,
@@ -93,13 +93,15 @@ var app = angular.module('frmlnd-grass', []);
 				};
 
 				if (attrs.auto === 'true') {
-					scope.initGrow();
+					$timeout(function() {
+						scope.initGrow();
+					}, (attrs.delay) ? attrs.delay : 2000);
 				}
 			}
 		}
 	};
 
-	frmlndGrass.$inject = ['$window','$interval'];
+	frmlndGrass.$inject = ['$window', '$interval', '$timeout'];
 	angular.module('frmlnd-grass').directive('frmlndGrass', frmlndGrass);
 
 })();

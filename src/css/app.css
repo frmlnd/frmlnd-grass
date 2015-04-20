@@ -29,6 +29,37 @@ button[disabled] {
   display: none !important;
 }
 
+code {
+  display: block;
+  margin: 20px;
+  background: #000;
+  border-top: 3px solid #ccc;
+  padding: 30px;
+  font-size: .8em;
+  font-family: 'Courier New', serif;
+  color: #fff;
+}
+
+.gist .gist-meta {
+  text-align: left;
+}
+
+footer {
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  color: #267F26;
+  font-size: 0.8em;
+  line-height: 3;
+  text-align: center;
+}
+footer a {
+  color: #267F26;
+  border-bottom: 1px dotted #267F26;
+  font-weight: 500;
+}
+
 html, body {
   width: 100%;
 }
@@ -61,8 +92,23 @@ body {
 .page h2 {
   font-weight: 500;
 }
+.page p {
+  line-height: 1.8;
+  max-width: 85%;
+  margin: 0 auto;
+}
 .page p .cite {
   font-size: .8em;
+}
+.page hr {
+  border: 0;
+  border-top: 1px dotted #fff;
+  width: 90%;
+  margin: 2em auto;
+}
+
+footer:hover {
+  z-index: 1002;
 }
 
 /*# sourceMappingURL=app.css.map */

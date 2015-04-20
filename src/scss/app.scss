@@ -32,9 +32,23 @@ body {
 		font-weight: 500;
 	}
 	p {
+		line-height: 1.8;
+		max-width: 85%;
+		margin: 0 auto;
 		.cite {
 			font-size: .8em;
 		}
 	}
+	hr {
+		border: 0;
+		border-top: 1px dotted $white;
+		width: 90%;
+		margin: 2em auto;
+	}
+}
 
+footer {
+	&:hover {
+		z-index: 1002;
+	}
 }
