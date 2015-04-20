@@ -6,6 +6,7 @@
 a {
   text-decoration: none;
   color: #253840;
+  border-bottom: 1px dotted #253840;
 }
 
 button {
@@ -80,7 +81,7 @@ body {
   position: relative;
 }
 .page h1 {
-  margin: 100px 0 0;
+  margin: 100px 0 30px;
   font-size: 36px;
   font-weight: 600;
   line-height: 1;
@@ -88,6 +89,7 @@ body {
 }
 .page h1 a {
   color: #267F26;
+  border: 0;
 }
 .page h2 {
   font-weight: 500;
@@ -95,14 +97,14 @@ body {
 .page p {
   line-height: 1.8;
   max-width: 85%;
-  margin: 0 auto;
+  margin: 0 auto 1.8em;
 }
 .page p .cite {
   font-size: .8em;
 }
 .page hr {
   border: 0;
-  border-top: 1px dotted #fff;
+  border-top: 1px dotted #253840;
   width: 90%;
   margin: 2em auto;
 }

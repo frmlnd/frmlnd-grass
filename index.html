@@ -17,12 +17,19 @@
 		<div class="page" ng-controller="MainController as main">
 			<h1><a href="https://github.com/frmlnd/frmlnd-grass" target="_blank">Grass</a></h1>
 			<p>
+				Grass is an angular directive that "grows" virtual grass out of the bottom of a container, most likely your webpage. It's silly and meant to be used for fun. Add some life to your site!
+			</p>
+			<p>
 				There is not a sprig of grass that shoots uninteresting to me.<br>
 				<span class="cite">-Thomas Jefferson</span>
 			</p>
 			<p>&nbsp;</p>
 			<p>
 				<button ng-click="main.isClicked = true; main.isDisabled = true; frmlndGrow()" ng-bind-html="main.buttonText()" ng-disabled="main.isDisabled"></button>
+			</p>
+			<hr>
+			<p>
+				Repo &amp; docs available <a href="https://github.com/frmlnd/frmlnd-grass">here</a>.
 			</p>
 		</div>
 

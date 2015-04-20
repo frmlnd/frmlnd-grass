@@ -22,10 +22,11 @@ Include frmlnd-grass directive, with duration as a parameter in milliseconds.
 ```
 
 ### Attributes
-
 * duration: The duration of the animation, in milliseconds
 * auto: Indicates whether grass should grow on load - true/false
 * delay: Sets the delay before first grow if "auto" is set to true
+
+Be careful with your settings. Run-time rendering can be processor intensive!
 
 ### Methods
 

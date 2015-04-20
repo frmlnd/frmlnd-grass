@@ -19,13 +19,14 @@ body {
 	text-align: center;
 	position: relative;
 	h1 {
-		margin: 100px 0 0;
+		margin: 100px 0 30px;
 		font-size: 36px;
 		font-weight: 600;
 		line-height: 1;
 		text-align: center;
 		a {
 			color: $green-med;
+			border: 0;
 		}
 	}
 	h2 {
@@ -34,14 +35,14 @@ body {
 	p {
 		line-height: 1.8;
 		max-width: 85%;
-		margin: 0 auto;
+		margin: 0 auto 1.8em;
 		.cite {
 			font-size: .8em;
 		}
 	}
 	hr {
 		border: 0;
-		border-top: 1px dotted $white;
+		border-top: 1px dotted $blue-dark;
 		width: 90%;
 		margin: 2em auto;
 	}
