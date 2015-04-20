@@ -36,3 +36,9 @@ The directive exposes the following public methods:
 ```
 <button ng-click="frmlndGrow()" ng-bind-html="Grow"></button>
 ```
+
+### Examples
+The following code will create a Grass element that grows for 2.5 seconds, starting with an initial automatic grow 3 seconds after page load.
+```
+<frmlnd-grass duration="2500" auto="true" delay="3000"></frmlnd-grass>
+```
