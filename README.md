@@ -2,8 +2,8 @@
 **frmlnd-grass** is an angular directive that "grows" virtual grass out of the bottom of a container, most likely your webpage.
 
 ## Dependencies
-bower install angular#1.3.15 --save-dev, or 
-[AngularJS 1.3.15](https://angularjs.org/)
+bower install angular#1.3.15 --save-dev,  
+or [AngularJS 1.3.15](https://angularjs.org/)
 
 ## Usage
 Include CSS and JS files:
@@ -25,6 +25,7 @@ Include frmlnd-grass directive, with duration as a parameter in milliseconds.
 
 * duration: The duration of the animation, in milliseconds
 * auto: Indicates whether grass should grow on load - true/false
+* delay: Sets the delay before first grow if "auto" is set to true
 
 ### Methods
 

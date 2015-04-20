@@ -34,13 +34,14 @@
 					// Make the grass grow
 					var count = 0;
 					var intervalLength = 17;
+					var duration = (attrs.duration) ? attrs.duration : 2500;
 					scope.growGrass = $interval(function() {
-						if (count * intervalLength > attrs.duration) {
+						if (count * intervalLength > duration) {
 							$interval.cancel(scope.growGrass);
 							scope.$emit('frmlndGrowComplete');
 						}
 
-						var repeat = attrs.duration / intervalLength;
+						var repeat = duration / intervalLength;
 						for (var i=0; i<repeat; i++) {
 							var blade_index = Math.floor(Math.random() * (dimensions.w - 1) + 1);
 							if (blade_index) {
